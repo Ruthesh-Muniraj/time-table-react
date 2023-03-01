@@ -89,6 +89,7 @@ function App() {
                     </Button>
                   );
                 }
+                return null;
               })}
           </div>
           <div id="school-list" className="school">
