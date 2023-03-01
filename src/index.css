@@ -1,21 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 html {
@@ -44,7 +39,7 @@ body {
 }
 
 .buttons {
-    text-align: center;
+    /* text-align: center; */
 }
 
 .buttons > button {
@@ -68,6 +63,7 @@ button:hover {
 h1,
 h2 {
     text-align: center;
+    font-weight: 600 !important;
 }
 
 table {
@@ -109,9 +105,6 @@ footer li {
 .school ul {
     list-style: none;
 }
-.school ul li {
-    margin-left: 0.4em;
-}
 
 #tab {
     overflow-x: scroll;
@@ -143,6 +136,7 @@ footer li {
         display: grid;
         grid-template-areas: "controls preview";
         column-gap: 20px;
+        margin-inline: 2rem;
     }
 
     #controls {

@@ -19,11 +19,11 @@ function Course(name, nick, slot) {
 
 export let schools = {
   SEM1: new School("C", "School of Chemical Sciences", []),
-  //SEM2: new School("B", "School of Biological Sciences", []),
+  SEM2: new School("B", "School of Biological Sciences", []),
   SEM3: new School("P", "School of Physical Sciences", []),
-  //SEM4: new School("M", "School of Mathematical Sciences", []),
+  SEM4: new School("M", "School of Mathematical Sciences", []),
   SEM5: new School("CS", "School of Computer Sciences", []),
-  //SEM6: new School("H", "School of Humanities and Social Sciences", []),
+  SEM6: new School("H", "School of Humanities and Social Sciences", []),
 };
 
 export let courses = {
