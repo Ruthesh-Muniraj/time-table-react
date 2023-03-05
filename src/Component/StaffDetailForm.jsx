@@ -1,4 +1,4 @@
-import { Button, Divider, Form, Input, Modal, Select, Tag } from "antd";
+import { Button, Form, Input, Select, Tag } from "antd";
 import React from "react";
 import { colors } from "../constant/data";
 
@@ -10,7 +10,7 @@ const StaffDetailForm = ({
   const [form] = Form.useForm();
 
   const tagRender = (props) => {
-    const { label, value, closable, onClose } = props;
+    const { label, closable, onClose } = props;
     const onPreventMouseDown = (event) => {
       event.preventDefault();
       event.stopPropagation();

@@ -24,13 +24,16 @@ const Controls = ({
 
   function printDocument() {
     const input = document.getElementById("preview");
+    const width = input.clientWidth;
+    const height = input.clientHeight;
+
     html2canvas(input, {
-      width: 1200,
-      height: 1200,
+      width: width,
+      height: height,
     }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
-      pdf.addImage(imgData, "JPEG", 6, 40, 220, 190);
+      pdf.addImage(imgData, "JPEG", 6, 40, width/7, height/7);
       // pdf.output('dataurlnewwindow');
       pdf.save("timetable.pdf");
     });

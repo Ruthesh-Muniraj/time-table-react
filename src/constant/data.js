@@ -37,7 +37,7 @@ export let courses = {
   A308: new Course("Complex Analysis (M2)", "CA", "F"),
   A309: new Course("Graph Theory (M2)", "GraphTheo", "G"),
   A311: new Course("Numerical Analysis (M5)", "Num Ana", "H"),
-  A312: new Course("Numerical Analysis II (M6)", "Num Ana", "I"),
+  A312: new Course("Numerical Analysis II (M6)", "Num Ana II", "I"),
 
   B204: new Course("Cell Biology (LH2)", "CellBio", "D"),
   B206: new Course("Moleclar Biology (LH2)", "MolBio", "F"),

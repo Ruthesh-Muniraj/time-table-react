@@ -2,8 +2,10 @@ import { Col, Divider, Empty, List, Modal, Row } from "antd";
 import React from "react";
 import { courses } from "../constant/data";
 import StaffDetailForm from "./StaffDetailForm";
+import { AppContext } from "../App";
 
 const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen }) => {
+  const appContext = React.useContext(AppContext);
   const [staff, setStaff] = React.useState([]);
   const [option, setOption] = React.useState([]);
 
@@ -20,16 +22,18 @@ const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen }) => {
       }
       return null;
     });
-    subjects.forEach((subject) => {
-      optionArray.push({
-        label: `${courses[subject].nick}-${courses[subject].slot}`,
-        value: subject,
-      });
+
+  subjects.forEach((subject) => {
+    optionArray.push({
+      label: `${courses[subject].nick}-${courses[subject].slot}`,
+      value: subject,
     });
+  });
 
   const onFinish = (values) => {
     setStaff((staff) => [...staff, values]);
-    if(values) {
+    appContext.update(values);
+    if (values) {
       const options = [...optionArray];
       const filteredArray = options.filter(function (e) {
         return this.indexOf(e.value) < 0;
@@ -37,8 +41,9 @@ const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen }) => {
       setOption(filteredArray);
     }
   };
+
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.error("Failed:", errorInfo);
   };
 
   return (
@@ -65,8 +70,8 @@ const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen }) => {
           <div className="staff-preview">
             <Divider orientation="left">Staffs Preview</Divider>
             <div className="staff-container">
-              {staff?.length ? (
-                staff.map((staff, index) => (
+              {appContext.contextValue?.length ? (
+                appContext.contextValue.map((staff, index) => (
                   <List
                     key={index}
                     size="small"

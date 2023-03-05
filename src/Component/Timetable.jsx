@@ -1,7 +1,68 @@
-import { Divider } from 'antd';
-import React from 'react'
+import { Divider } from "antd";
+import React from "react";
+import { colors, courses } from "../constant/data";
+import { AppContext } from "../App";
 
 const Timetable = ({ selectedSemester }) => {
+  const appContext = React.useContext(AppContext);
+  const subjects = {};
+  const staff = [];
+  
+  
+  selectedSemester.length &&
+  selectedSemester[1].courses.map((course) => {
+      let index ;
+      appContext.contextValue.map((staff, idx) => {
+        const ind = staff.subject.map((p) => p === course);
+        if (ind.includes(true)) {
+          index = idx;
+        }
+        return null;
+      }
+      );
+      if (index !== undefined)
+      staff.push({
+        name: appContext.contextValue[index].name,
+        subject: courses[course].name,
+      });
+    });
+
+  selectedSemester.length &&
+    selectedSemester[1].courses.map((course) => {
+      switch (courses[course].slot) {
+        case "A":
+          subjects.A = courses[course].nick;
+          break;
+        case "B":
+          subjects.B = courses[course].nick;
+          break;
+        case "C":
+          subjects.C = courses[course].nick;
+          break;
+        case "D":
+          subjects.D = courses[course].nick;
+          break;
+        case "E":
+          subjects.E = courses[course].nick;
+          break;
+        case "F":
+          subjects.F = courses[course].nick;
+          break;
+        case "G":
+          subjects.G = courses[course].nick;
+          break;
+        case "H":
+          subjects.H = courses[course].nick;
+          break;
+        case "I":
+          subjects.I = courses[course].nick;
+          break;
+        default:
+          console.log("Invalid course");
+      }
+      return null;
+    });
+
   return (
     <div id="preview">
       <Divider orientation="center">
@@ -28,77 +89,167 @@ const Timetable = ({ selectedSemester }) => {
           <tbody>
             <tr>
               <th scope="row">Monday</th>
-              <td className="A">A</td>
-              <td className="B">B</td>
-              <td className="C">C</td>
-              <td className="D">D</td>
+              <td style={{ background: colors["A"] }}>
+                {subjects["A"] || "A"}
+              </td>
+              <td style={{ background: colors["B"] }}>
+                {subjects["B"] || "B"}
+              </td>
+              <td style={{ background: colors["C"] }}>
+                {subjects["C"] || "C"}
+              </td>
+              <td style={{ background: colors["D"] }}>
+                {subjects["D"] || "D"}
+              </td>
               <td className="lunch">Lunch Break</td>
-              <td className="G">G</td>
-              <td className="H">H</td>
-              <td className="I">I</td>
-              <td className="E">E</td>
+              <td style={{ background: colors["G"] }}>
+                {subjects["G"] || "G"}
+              </td>
+              <td style={{ background: colors["H"] }}>
+                {subjects["H"] || "H"}
+              </td>
+              <td style={{ background: colors["I"] }}>
+                {subjects["I"] || "I"}
+              </td>
+              <td style={{ background: colors["E"] }}>
+                {subjects["E"] || "E"}
+              </td>
             </tr>
 
             <tr>
               <th scope="row">Tuesday</th>
-              <td className="F">F</td>
-              <td className="A">A</td>
-              <td className="B">B</td>
-              <td className="C">C</td>
+              <td style={{ background: colors["F"] }}>
+                {subjects["F"] || "F"}
+              </td>
+              <td style={{ background: colors["A"] }}>
+                {subjects["A"] || "A"}
+              </td>
+              <td style={{ background: colors["B"] }}>
+                {subjects["B"] || "B"}
+              </td>
+              <td style={{ background: colors["C"] }}>
+                {subjects["C"] || "C"}
+              </td>
               <td className="lunch">Lunch Break</td>
-              <td className="D">D</td>
-              <td className="I">I</td>
-              <td className="G">G</td>
-              <td className="H">H</td>
+              <td style={{ background: colors["D"] }}>
+                {subjects["D"] || "D"}
+              </td>
+              <td style={{ background: colors["I"] }}>
+                {subjects["I"] || "I"}
+              </td>
+              <td style={{ background: colors["G"] }}>
+                {subjects["G"] || "G"}
+              </td>
+              <td style={{ background: colors["H"] }}>
+                {subjects["H"] || "H"}
+              </td>
             </tr>
 
             <tr>
               <th scope="row">Wednesday</th>
-              <td className="E">E</td>
-              <td className="F">F</td>
-              <td className="A">A</td>
-              <td className="B">B</td>
+              <td style={{ background: colors["E"] }}>
+                {subjects["E"] || "E"}
+              </td>
+              <td style={{ background: colors["F"] }}>
+                {subjects["F"] || "F"}
+              </td>
+              <td style={{ background: colors["A"] }}>
+                {subjects["A"] || "A"}
+              </td>
+              <td style={{ background: colors["B"] }}>
+                {subjects["B"] || "B"}
+              </td>
               <td className="lunch">Lunch Break</td>
-              <td className="C">C</td>
-              <td className="D">D</td>
-              <td className="G">G</td>
-              <td className="H">H</td>
+              <td style={{ background: colors["C"] }}>
+                {subjects["C"] || "C"}
+              </td>
+              <td style={{ background: colors["D"] }}>
+                {subjects["D"] || "D"}
+              </td>
+              <td style={{ background: colors["G"] }}>
+                {subjects["G"] || "G"}
+              </td>
+              <td style={{ background: colors["H"] }}>
+                {subjects["H"] || "H"}
+              </td>
             </tr>
 
             <tr>
               <th scope="row">Thursday</th>
-              <td className="D">D</td>
-              <td className="E">E</td>
-              <td className="F">F</td>
-              <td className="A">A</td>
+              <td style={{ background: colors["D"] }}>
+                {subjects["D"] || "D"}
+              </td>
+              <td style={{ background: colors["E"] }}>
+                {subjects["E"] || "E"}
+              </td>
+              <td style={{ background: colors["F"] }}>
+                {subjects["F"] || "F"}
+              </td>
+              <td style={{ background: colors["A"] }}>
+                {subjects["A"] || "A"}
+              </td>
               <td className="lunch">Lunch Break</td>
-              <td className="B">B</td>
-              <td className="C">C</td>
-              <td className="D">D</td>
-              <td className="I">I</td>
+              <td style={{ background: colors["B"] }}>
+                {subjects["B"] || "B"}
+              </td>
+              <td style={{ background: colors["C"] }}>
+                {subjects["C"] || "C"}
+              </td>
+              <td style={{ background: colors["D"] }}>
+                {subjects["D"] || "D"}
+              </td>
+              <td style={{ background: colors["I"] }}>
+                {subjects["I"] || "I"}
+              </td>
             </tr>
 
             <tr>
               <th scope="row">Friday</th>
-              <td className="C">C</td>
-              <td className="D">D</td>
-              <td className="E">E</td>
-              <td className="F">F</td>
+              <td style={{ background: colors["C"] }}>
+                {subjects["C"] || "C"}
+              </td>
+              <td style={{ background: colors["D"] }}>
+                {subjects["D"] || "D"}
+              </td>
+              <td style={{ background: colors["E"] }}>
+                {subjects["E"] || "E"}
+              </td>
+              <td style={{ background: colors["F"] }}>
+                {subjects["F"] || "F"}
+              </td>
               <td className="lunch">Lunch Break</td>
-              <td className="I">I</td>
-              <td className="H">H</td>
-              <td className="G">G</td>
-              <td className="A">A</td>
+              <td style={{ background: colors["I"] }}>
+                {subjects["I"] || "I"}
+              </td>
+              <td style={{ background: colors["H"] }}>
+                {subjects["H"] || "H"}
+              </td>
+              <td style={{ background: colors["G"] }}>
+                {subjects["G"] || "G"}
+              </td>
+              <td style={{ background: colors["A"] }}>
+                {subjects["A"] || "A"}
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <h2 id="h2leg" className="hidden">
-        Legend
-      </h2>
-      <ul id="legend"></ul>
+      {selectedSemester.length ? (
+        <div>
+          <Divider orientation="center">Legand</Divider>
+          <ul id="legend">
+            {staff?.length
+              ? staff.map((staff) => (
+                  <li>
+                    <span style={{fontWeight: 600}}>{staff.name}:</span> {staff.subject}{" "}
+                  </li>
+                ))
+              : null}
+          </ul>
+        </div>
+      ) : null}
     </div>
   );
 };
 
-export default Timetable
+export default Timetable;
