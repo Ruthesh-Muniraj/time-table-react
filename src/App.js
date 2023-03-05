@@ -21,10 +21,6 @@ function App() {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    console.log("handeling");
-  };
-
   return (
     <div className="App">
       <Header />
@@ -44,7 +40,6 @@ function App() {
         isOdd={isOdd}
         semesters={semesters}
         setIsOpen={setIsModalOpen}
-        handleOk={handleOk}
       />
     </div>
   );

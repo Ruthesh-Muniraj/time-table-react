@@ -1,10 +1,14 @@
-import { Button, Divider, List, Switch } from 'antd';
-import { UndoOutlined, DownloadOutlined } from "@ant-design/icons";
-import { courses } from '../constant/data';
+import { Button, Divider, List, Switch } from "antd";
+import {
+  UndoOutlined,
+  DownloadOutlined,
+  UserAddOutlined,
+} from "@ant-design/icons";
+import { courses } from "../constant/data";
 
-import React from 'react'
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import React from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const Controls = ({
   semesters,
@@ -14,7 +18,6 @@ const Controls = ({
   isOdd,
   setIsOdd,
 }) => {
-
   const clear = () => {
     setSelectedSemester([]);
   };
@@ -38,6 +41,7 @@ const Controls = ({
       <Divider orientation="left">Select Semester</Divider>
       <div id="school-tabs" className="buttons">
         <Switch
+          size="default"
           checked={isOdd}
           checkedChildren="Odd"
           unCheckedChildren="Eve"
@@ -47,7 +51,13 @@ const Controls = ({
           }}
         />
         &nbsp;
-        <Button type="primary" onClick={handleAddOrEdit}>
+        <Button
+          type="primary"
+          size="large"
+          ghost
+          icon={<UserAddOutlined />}
+          onClick={handleAddOrEdit}
+        >
           Add / Edit Staff
         </Button>
         <br />
@@ -58,6 +68,7 @@ const Controls = ({
               return (
                 <Button
                   type={"primary"}
+                  shape="round"
                   ghost={selectedSemester === semester ? false : true}
                   onClick={() => setSelectedSemester(semester)}
                   key={semester[0]}
@@ -69,6 +80,7 @@ const Controls = ({
               return (
                 <Button
                   type={"primary"}
+                  shape="round"
                   ghost={selectedSemester === semester ? false : true}
                   onClick={() => setSelectedSemester(semester)}
                   key={semester[0]}
@@ -115,4 +127,4 @@ const Controls = ({
   );
 };
 
-export default Controls
+export default Controls;

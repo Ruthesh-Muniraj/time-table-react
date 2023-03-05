@@ -3,8 +3,6 @@ import React from "react";
 import { colors } from "../constant/data";
 
 const StaffDetailForm = ({
-  staffOpen,
-  setStaffOpen,
   option,
   onFinish,
   onFinishFailed,
@@ -35,55 +33,51 @@ const StaffDetailForm = ({
   const onSubmit = (values) => {
     form.resetFields();
     onFinish(values);
-    setStaffOpen(false);
   };
 
   return (
-    <Modal footer={null} open={staffOpen} onCancel={() => setStaffOpen(false)}>
-      <Divider orientation="left">Staff details</Divider>
-      <Form
-        layout="vertical"
-        form={form}
-        onFinish={onSubmit}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
+    <Form
+      layout="vertical"
+      form={form}
+      onFinish={onSubmit}
+      onFinishFailed={onFinishFailed}
+      autoComplete="off"
+    >
+      <Form.Item
+        name="name"
+        label="Name"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
       >
-        <Form.Item
-          name="name"
-          label="Name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="subject"
-          label="Subject"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Select
-            mode="multiple"
-            showArrow
-            allowClear
-            tagRender={tagRender}
-            placeholder="Select subjects"
-            options={option}
-          />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Add Staff
-          </Button>
-        </Form.Item>
-      </Form>
-    </Modal>
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name="subject"
+        label="Subject"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Select
+          mode="multiple"
+          showArrow
+          allowClear
+          tagRender={tagRender}
+          placeholder="Select subjects"
+          options={option}
+        />
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Add Staff
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 

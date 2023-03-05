@@ -1,11 +1,10 @@
-import { Button, Col, Divider, Empty, List, Modal, Row } from "antd";
+import { Col, Divider, Empty, List, Modal, Row } from "antd";
 import React from "react";
-import { colors, courses } from "../constant/data";
+import { courses } from "../constant/data";
 import StaffDetailForm from "./StaffDetailForm";
 
-const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen, handleOk }) => {
+const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen }) => {
   const [staff, setStaff] = React.useState([]);
-  const [staffOpen, setStaffOpen] = React.useState(false);
   const [option, setOption] = React.useState([]);
 
   const subjects = [];
@@ -30,52 +29,33 @@ const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen, handleOk }) => {
 
   const onFinish = (values) => {
     setStaff((staff) => [...staff, values]);
+    if(values) {
+      const options = [...optionArray];
+      const filteredArray = options.filter(function (e) {
+        return this.indexOf(e.value) < 0;
+      }, values.subject);
+      setOption(filteredArray);
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const setNewOptions = async () => {
-    const options = [...optionArray];
-    const dummy = staff.map((staff) => staff.subject);
-    let subject = [];
-    for (var i = 0; i < dummy.length; i++) {
-      subject = subject.concat(dummy[i]);
-    }
-
-    const filteredArray = options.filter(function (e) {
-      return this.indexOf(e.value) < 0;
-    }, subject);
-    setOption(filteredArray);
-  };
-
-  React.useEffect(() => {
-    staff.length && setNewOptions() 
-  }, [staff]);
-
   return (
     <Modal
-      title="Add/ Edit Teaching Staff"
+      footer={null}
+      title="Add Teaching Staff"
       open={isOpen}
       width={1000}
-      onOk={handleOk}
       onCancel={() => {
         setIsOpen(false);
+        setStaff([]);
       }}
     >
       <Row>
         <Col span={10}>
-          <Button
-            type="primary"
-            onClick={() => {
-              setStaffOpen(true);
-            }}
-          >
-            Add Staff
-          </Button>
+          <Divider orientation="left">Enter Staff details</Divider>
           <StaffDetailForm
-            staffOpen={staffOpen}
-            setStaffOpen={setStaffOpen}
             option={staff.length ? option : optionArray}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
@@ -83,7 +63,7 @@ const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen, handleOk }) => {
         </Col>
         <Col span={14}>
           <div className="staff-preview">
-            <Divider orientation="left">Preview</Divider>
+            <Divider orientation="left">Staffs Preview</Divider>
             <div className="staff-container">
               {staff?.length ? (
                 staff.map((staff, index) => (
