@@ -47,6 +47,15 @@ body {
     margin-bottom: .4rem;
 }
 
+.ant-btn-success {
+  color: #28a745 !important;
+  /* background-color: #28a745 !important; */
+  border-color: #28a745 !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+
 button {
     background: #fff;
     border-radius: 0;
@@ -130,6 +139,26 @@ footer li {
     border-color: rgb(227, 227, 227);
 }
 
+.staff-preview {
+    margin-inline-start: 10px;
+    width: auto;
+    height: 100%;
+    border: 1px solid rgba(5, 5, 5, 0.06);
+    border-radius: 6px;
+}
+.staff-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding-inline: 1rem;
+    padding-block-end: 1rem;
+    overflow-y: auto;
+}
+.staffName li {
+    margin-left: -20px;
+}
+
 @media (min-width:1080px) {
 
     #wrapper {
@@ -141,7 +170,7 @@ footer li {
 
     #controls {
         grid-area: controls;
-        min-width: 20vw;
+        min-width: 15vw;
     }
 
     #preview {

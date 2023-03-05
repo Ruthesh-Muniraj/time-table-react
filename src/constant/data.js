@@ -17,21 +17,30 @@ function Course(name, nick, slot) {
   this.slot = slot;
 }
 
-export let schools = {
-  SEM1: new School("C", "School of Chemical Sciences", []),
-  SEM2: new School("B", "School of Biological Sciences", []),
-  SEM3: new School("P", "School of Physical Sciences", []),
-  SEM4: new School("M", "School of Mathematical Sciences", []),
-  SEM5: new School("CS", "School of Computer Sciences", []),
-  SEM6: new School("H", "School of Humanities and Social Sciences", []),
+export let semestersData = {
+  SEM1: new School("A", "Semester 1", []),
+  SEM2: new School("B", "Semester 2", []),
+  SEM3: new School("C", "Semester 3", []),
+  SEM4: new School("D", "Semester 4", []),
+  SEM5: new School("E", "Semester 5", []),
+  SEM6: new School("F", "Semester 6", []),
+  SEM7: new School("G", "Semester 7", []),
+  SEM8: new School("H", "Semester 8", []),
 };
 
 export let courses = {
-  // always use A1, A2, ... for degenerates of slot A
-  /* Biology */
+  A202: new Course("Group Theory (M1)", "GrpTheory", "A"),
+  A204: new Course("Metric Spaces (M1)", "MetSpace", "B"),
+  A206: new Course("Probability Theory (M1)", "PT", "C"),
+  A301: new Course("Lebesque Integration (M2)", "LI", "D"),
+  A307: new Course("Field Theory (M2)", "FT", "E"),
+  A308: new Course("Complex Analysis (M2)", "CA", "F"),
+  A309: new Course("Graph Theory (M2)", "GraphTheo", "G"),
+  A311: new Course("Numerical Analysis (M5)", "Num Ana", "H"),
+  A312: new Course("Numerical Analysis II (M6)", "Num Ana", "I"),
+
   B204: new Course("Cell Biology (LH2)", "CellBio", "D"),
   B206: new Course("Moleclar Biology (LH2)", "MolBio", "F"),
-
   B305: new Course("Immunology (B2)", "Immuno", "B"),
   B307: new Course("Genetics (B2)", "Gene", "A"),
   B353: new Course("Plant Developmental Biology (B3)", "PlantDev Bio", "D"),
@@ -75,29 +84,6 @@ export let courses = {
   CS460: new Course("Machine Learning (M3)", "ML", "D"),
   CS458: new Course("Approximation Algorithms (M3)", "AppAlgo", "F"),
 
-  /* Mathematics */
-  M202: new Course("Group Theory (M1)", "GrpTheory", "F"),
-  M204: new Course("Metric Spaces (M1)", "MetSpace", "D"),
-  M206: new Course("Probability Theory (M1)", "PT", "C"),
-
-  M301: new Course("Lebesque Integration (M2)", "LI", "E"),
-  M307: new Course("Field Theory (M2)", "FT", "A"),
-  M308: new Course("Complex Analysis (M2)", "CA", "G"),
-  M309: new Course("Graph Theory (M2)", "GraphTheo", "B"),
-  M311: new Course("Numerical Analysis (M5)", "H"),
-
-  M402: new Course("Representations of Finite Groups (M2)", "FG", "H"),
-  M404: new Course("Algebraic Topology (M2)", "AT", "G"),
-  M456: new Course("Algebraic Geometry (M3)", "AG", "C"),
-  M470: new Course("Abstract Harmonic Analysis (M2)", "Abs HarmAnal", "D"),
-  M452: new Course("Advanced Functional Analysis (M3)", "Adv FuncAnal", "B"),
-  M483: new Course("Introduction to Manifolds (M4)", "Manifolds", "B"),
-  M463: new Course("Finite Fields (M5)", "FF", "B"),
-  M451: new Course("Advanced Complex Analysis (M1)", "Adv CompAnal", "I"),
-
-  M561: new Course("Elliptical Curves (M1)", "EC", "A"),
-  M554: new Course("Ergodic Theory (M3)", "ET", "A"),
-
   /* Physics */
   P204: new Course("Electromagnetism I (P107)", "EM1", "D"),
   P205: new Course("Mathematical Methods II (P107)", "MM2", "B"),
@@ -134,23 +120,23 @@ export let courses = {
 };
 
 for (let course in courses) {
-  for (let school in schools) {
-    if (schools[school].code === course.match(/^[^0-9]*/)[0]) {
-      schools[school].courses.push(course);
+  for (let semester in semestersData) {
+    if (semestersData[semester].code === course.match(/^[^0-9]*/)[0]) {
+      semestersData[semester].courses.push(course);
     }
   }
 }
 
 // Colorblindness-friendly color palette from: https://davidmathlogic.com/colorblind/
-export let colors = [
-  "#117733",
-  "#44aa99",
-  "#d55e00",
-  "#88ccee",
-  "#0072b2",
-  "#ddcc77",
-  "#cc6677",
-  "#aa4499",
-  "#882255",
-  "#e69f00",
-];
+export let colors = {
+  "A":"#117733",
+  "B":"#44aa99",
+  "C":"#d55e00",
+  "D":"#88ccee",
+  "E":"#0072b2",
+  "F":"#ddcc77",
+  "G":"#cc6677",
+  "H":"#aa4499",
+  "I":"#882255",
+  "J":"#e69f00",
+}
