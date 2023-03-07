@@ -51,6 +51,8 @@ function App() {
           semesters={semesters}
           setIsOpen={setIsModalOpen}
         />
+
+        <br />
     </AppContext.Provider>
   );
 }
