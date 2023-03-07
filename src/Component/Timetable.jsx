@@ -32,6 +32,7 @@ const Timetable = ({ selectedSemester }) => {
           subject: courses[course].name,
         });
       }
+      return null;
     });
 
   selectedSemester.length &&
