@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <>
       <Row justify="center" gutter={[16, 16]}>
-        <img src="snr-logo.jpeg" alt="" />
+        <img src="apple-touch-icon.png" alt="" style={{width: '120px', height: '84px'}}/>
         <Col>
           <Typography.Title level={1} style={{ margin: 0 }}>
             Sri Ramakrishna Institute of Technology

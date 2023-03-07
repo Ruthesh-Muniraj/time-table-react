@@ -129,14 +129,14 @@ for (let course in courses) {
 
 // Colorblindness-friendly color palette from: https://davidmathlogic.com/colorblind/
 export let colors = {
-  "A":"#117733",
-  "B":"#44aa99",
-  "C":"#d55e00",
-  "D":"#88ccee",
-  "E":"#0072b2",
-  "F":"#ddcc77",
-  "G":"#cc6677",
-  "H":"#aa4499",
-  "I":"#882255",
-  "J":"#e69f00",
-}
+  A: "#179f44",
+  B: "#44aa99",
+  C: "#d55e00",
+  D: "#88ccee",
+  E: "#0072b2",
+  F: "#ddcc77",
+  G: "#cc6677",
+  H: "#aa4499",
+  I: "#ad2b6c",
+  J: "#e69f00",
+};

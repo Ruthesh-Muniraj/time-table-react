@@ -79,13 +79,13 @@ table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid;
+    border: 1px solid #383838;
 }
 
 th,
 td {
     padding: 0.8rem;
-    border: 1px solid;
+    border: 1px solid #383838;
     text-align: center;
     word-wrap: break-word;
     width: 9rem;
@@ -113,11 +113,6 @@ footer li {
 
 .school ul {
     list-style: none;
-}
-
-#tab {
-    overflow-x: scroll;
-    scroll-behavior: smooth;
 }
 
 #legend {

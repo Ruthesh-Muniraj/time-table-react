@@ -1,4 +1,4 @@
-import { Divider } from "antd";
+import { Divider, List } from "antd";
 import React from "react";
 import { colors, courses } from "../constant/data";
 import { AppContext } from "../App";
@@ -96,163 +96,248 @@ const Timetable = ({ selectedSemester }) => {
           <tbody>
             <tr>
               <th scope="row">Monday</th>
-              <td style={{ background: subjects["A"] ? colors["A"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
+              >
                 {subjects["A"] || "A"}
               </td>
-              <td style={{ background: subjects["B"] ? colors["B"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["B"] ? colors["B"] : "#ffffff" }}
+              >
                 {subjects["B"] || "B"}
               </td>
-              <td style={{ background: subjects["C"] ? colors["C"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
+              >
                 {subjects["C"] || "C"}
               </td>
-              <td style={{ background: subjects["D"] ? colors["D"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
+              >
                 {subjects["D"] || "D"}
               </td>
-              <td className="lunch">Lunch Break</td>
-              <td style={{ background: subjects["G"] ? colors["G"] : '#ffffff' }}>
+              <td
+                className="lunch"
+                rowSpan={5}
+                style={{ border: 0, transform: "rotate(270deg)" }}
+              >
+                Lunch Break
+              </td>
+              <td
+                style={{ background: subjects["G"] ? colors["G"] : "#ffffff" }}
+              >
                 {subjects["G"] || "G"}
               </td>
-              <td style={{ background: subjects["H"] ? colors["H"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["H"] ? colors["H"] : "#ffffff" }}
+              >
                 {subjects["H"] || "H"}
               </td>
-              <td style={{ background: subjects["I"] ? colors["I"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["I"] ? colors["I"] : "#ffffff" }}
+              >
                 {subjects["I"] || "I"}
               </td>
-              <td style={{ background: subjects["E"] ? colors["E"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["E"] ? colors["E"] : "#ffffff" }}
+              >
                 {subjects["E"] || "E"}
               </td>
             </tr>
 
             <tr>
               <th scope="row">Tuesday</th>
-              <td style={{ background: subjects["F"] ? colors["F"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["F"] ? colors["F"] : "#ffffff" }}
+              >
                 {subjects["F"] || "F"}
               </td>
-              <td style={{ background: subjects["A"] ? colors["A"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
+              >
                 {subjects["A"] || "A"}
               </td>
-              <td style={{ background: subjects["B"] ? colors["B"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["B"] ? colors["B"] : "#ffffff" }}
+              >
                 {subjects["B"] || "B"}
               </td>
-              <td style={{ background: subjects["C"] ? colors["C"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
+              >
                 {subjects["C"] || "C"}
               </td>
-              <td className="lunch">Lunch Break</td>
-              <td style={{ background: subjects["D"] ? colors["D"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
+              >
                 {subjects["D"] || "D"}
               </td>
-              <td style={{ background: subjects["I"] ? colors["I"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["I"] ? colors["I"] : "#ffffff" }}
+              >
                 {subjects["I"] || "I"}
               </td>
-              <td style={{ background: subjects["G"] ? colors["G"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["G"] ? colors["G"] : "#ffffff" }}
+              >
                 {subjects["G"] || "G"}
               </td>
-              <td style={{ background: subjects["H"] ? colors["H"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["H"] ? colors["H"] : "#ffffff" }}
+              >
                 {subjects["H"] || "H"}
               </td>
             </tr>
 
             <tr>
               <th scope="row">Wednesday</th>
-              <td style={{ background: subjects["E"] ? colors["E"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["E"] ? colors["E"] : "#ffffff" }}
+              >
                 {subjects["E"] || "E"}
               </td>
-              <td style={{ background: subjects["F"] ? colors["F"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["F"] ? colors["F"] : "#ffffff" }}
+              >
                 {subjects["F"] || "F"}
               </td>
-              <td style={{ background: subjects["A"] ? colors["A"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
+              >
                 {subjects["A"] || "A"}
               </td>
-              <td style={{ background: subjects["B"] ? colors["B"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["B"] ? colors["B"] : "#ffffff" }}
+              >
                 {subjects["B"] || "B"}
               </td>
-              <td className="lunch">Lunch Break</td>
-              <td style={{ background: subjects["C"] ? colors["C"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
+              >
                 {subjects["C"] || "C"}
               </td>
-              <td style={{ background: subjects["D"] ? colors["D"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
+              >
                 {subjects["D"] || "D"}
               </td>
-              <td style={{ background: subjects["G"] ? colors["G"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["G"] ? colors["G"] : "#ffffff" }}
+              >
                 {subjects["G"] || "G"}
               </td>
-              <td style={{ background: subjects["H"] ? colors["H"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["H"] ? colors["H"] : "#ffffff" }}
+              >
                 {subjects["H"] || "H"}
               </td>
             </tr>
 
             <tr>
               <th scope="row">Thursday</th>
-              <td style={{ background: subjects["D"] ? colors["D"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
+              >
                 {subjects["D"] || "D"}
               </td>
-              <td style={{ background: subjects["E"] ? colors["E"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["E"] ? colors["E"] : "#ffffff" }}
+              >
                 {subjects["E"] || "E"}
               </td>
-              <td style={{ background: subjects["F"] ? colors["F"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["F"] ? colors["F"] : "#ffffff" }}
+              >
                 {subjects["F"] || "F"}
               </td>
-              <td style={{ background: subjects["A"] ? colors["A"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
+              >
                 {subjects["A"] || "A"}
               </td>
-              <td className="lunch">Lunch Break</td>
-              <td style={{ background: subjects["B"] ? colors["B"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["B"] ? colors["B"] : "#ffffff" }}
+              >
                 {subjects["B"] || "B"}
               </td>
-              <td style={{ background: subjects["C"] ? colors["C"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
+              >
                 {subjects["C"] || "C"}
               </td>
-              <td style={{ background: subjects["D"] ? colors["D"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
+              >
                 {subjects["D"] || "D"}
               </td>
-              <td style={{ background: subjects["I"] ? colors["I"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["I"] ? colors["I"] : "#ffffff" }}
+              >
                 {subjects["I"] || "I"}
               </td>
             </tr>
 
             <tr>
               <th scope="row">Friday</th>
-              <td style={{ background: subjects["C"] ? colors["C"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
+              >
                 {subjects["C"] || "C"}
               </td>
-              <td style={{ background: subjects["D"] ? colors["D"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
+              >
                 {subjects["D"] || "D"}
               </td>
-              <td style={{ background: subjects["E"] ? colors["E"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["E"] ? colors["E"] : "#ffffff" }}
+              >
                 {subjects["E"] || "E"}
               </td>
-              <td style={{ background: subjects["F"] ? colors["F"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["F"] ? colors["F"] : "#ffffff" }}
+              >
                 {subjects["F"] || "F"}
               </td>
-              <td className="lunch">Lunch Break</td>
-              <td style={{ background: subjects["I"] ? colors["I"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["I"] ? colors["I"] : "#ffffff" }}
+              >
                 {subjects["I"] || "I"}
               </td>
-              <td style={{ background: subjects["H"] ? colors["H"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["H"] ? colors["H"] : "#ffffff" }}
+              >
                 {subjects["H"] || "H"}
               </td>
-              <td style={{ background: subjects["G"] ? colors["G"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["G"] ? colors["G"] : "#ffffff" }}
+              >
                 {subjects["G"] || "G"}
               </td>
-              <td style={{ background: subjects["A"] ? colors["A"] : '#ffffff' }}>
+              <td
+                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
+              >
                 {subjects["A"] || "A"}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
+      <br/>
       {selectedSemester.length ? (
         <div>
-          <Divider orientation="center">Legand</Divider>
-          <ul id="legend">
-            {staff?.length
-              ? staff.map((staff) => (
-                  <li>
-                    <span style={{fontWeight: 600}}>{staff.name}:</span> {staff.subject}{" "}
-                  </li>
-                ))
-              : null}
-          </ul>
+          <List
+            size="small"
+            bordered
+            header={<h3>Table Legand</h3>}
+            dataSource={staff}
+            renderItem={(item) => (
+              <List.Item>
+                <span style={{ fontWeight: 500 }}>{item.name}:</span>{" "}
+                {item.subject}
+              </List.Item>
+            )}
+          />
         </div>
       ) : null}
     </div>
