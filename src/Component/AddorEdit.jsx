@@ -34,7 +34,7 @@ const AddorEdit = ({ isOpen, isOdd, semesters, setIsOpen }) => {
     setStaff((staff) => [...staff, values]);
     appContext.update(values);
     if (values) {
-      const options = [...optionArray];
+      const options = staff.length ? [...option] : [...optionArray];
       const filteredArray = options.filter(function (e) {
         return this.indexOf(e.value) < 0;
       }, values.subject);
