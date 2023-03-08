@@ -61,7 +61,7 @@ const Controls = ({
           icon={<UserAddOutlined />}
           onClick={handleAddOrEdit}
         >
-          Add / Edit Staff
+          Add
         </Button>
         <br />
         {semesters &&

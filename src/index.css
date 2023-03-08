@@ -124,6 +124,9 @@ footer li {
     list-style: none;
     white-space: pre;
 }
+#tab {
+    overflow-x: scroll;
+}
 
 .buttons > div {
     width: 14rem;
