@@ -1,6 +1,7 @@
-import { Divider, List } from "antd";
+import { Button, Col, Divider, List, Row } from "antd";
 import React from "react";
-import { colors, courses } from "../constant/data";
+import { UndoOutlined } from "@ant-design/icons";
+import { bluePrint, colors, courses } from "../constant/data";
 import { AppContext } from "../App";
 
 const Timetable = ({ selectedSemester }) => {
@@ -8,6 +9,15 @@ const Timetable = ({ selectedSemester }) => {
   const subjects = {};
   const staff = [];
   
+  const [selectedBluePrint, setSelectedBluePrint] = React.useState(bluePrint[0]);
+
+  const resetBluePrint = () => {
+    const random = Math.floor(Math.random() * bluePrint.length);
+    setSelectedBluePrint(bluePrint[random]);
+  }
+  React.useEffect(() => {
+    resetBluePrint();
+  }, [])
   
   selectedSemester.length &&
   selectedSemester[1].courses.map((course) => {
@@ -71,6 +81,33 @@ const Timetable = ({ selectedSemester }) => {
       return null;
     });
 
+  const day = [
+    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+  ]
+
+  const TableCoulmn = ({ col, ind }) => {
+    if(col === 'lunch') {
+      return (
+        <td
+          className="lunch"
+          rowSpan={5}
+          style={{ border: 0, transform: "rotate(270deg)" }}
+        >
+          Lunch Break
+        </td>
+      );
+    } else {
+      return (
+        <td
+          key={ind}
+          style={{ background: subjects[col] ? colors[col] : "#ffffff" }}
+        >
+          {subjects[col] || col}
+        </td>
+      );
+    }
+  };
+
   return (
     <div id="preview">
       <Divider orientation="center">
@@ -78,6 +115,20 @@ const Timetable = ({ selectedSemester }) => {
           ? `Generated Timetable for ${selectedSemester[0]}`
           : "Timetable Structure"}
       </Divider>
+      <Row>
+        <Col offset={22}>
+          <Button
+            type="primary"
+            ghost
+            icon={<UndoOutlined />}
+            size="middle"
+            onClick={resetBluePrint}
+          >
+            Refresh
+          </Button>
+        </Col>
+      </Row>
+      <br />
       <div id="tab">
         <table>
           <thead>
@@ -95,236 +146,18 @@ const Timetable = ({ selectedSemester }) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Monday</th>
-              <td
-                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
-              >
-                {subjects["A"] || "A"}
-              </td>
-              <td
-                style={{ background: subjects["B"] ? colors["B"] : "#ffffff" }}
-              >
-                {subjects["B"] || "B"}
-              </td>
-              <td
-                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
-              >
-                {subjects["C"] || "C"}
-              </td>
-              <td
-                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
-              >
-                {subjects["D"] || "D"}
-              </td>
-              <td
-                className="lunch"
-                rowSpan={5}
-                style={{ border: 0, transform: "rotate(270deg)" }}
-              >
-                Lunch Break
-              </td>
-              <td
-                style={{ background: subjects["G"] ? colors["G"] : "#ffffff" }}
-              >
-                {subjects["G"] || "G"}
-              </td>
-              <td
-                style={{ background: subjects["H"] ? colors["H"] : "#ffffff" }}
-              >
-                {subjects["H"] || "H"}
-              </td>
-              <td
-                style={{ background: subjects["I"] ? colors["I"] : "#ffffff" }}
-              >
-                {subjects["I"] || "I"}
-              </td>
-              <td
-                style={{ background: subjects["E"] ? colors["E"] : "#ffffff" }}
-              >
-                {subjects["E"] || "E"}
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">Tuesday</th>
-              <td
-                style={{ background: subjects["F"] ? colors["F"] : "#ffffff" }}
-              >
-                {subjects["F"] || "F"}
-              </td>
-              <td
-                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
-              >
-                {subjects["A"] || "A"}
-              </td>
-              <td
-                style={{ background: subjects["B"] ? colors["B"] : "#ffffff" }}
-              >
-                {subjects["B"] || "B"}
-              </td>
-              <td
-                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
-              >
-                {subjects["C"] || "C"}
-              </td>
-              <td
-                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
-              >
-                {subjects["D"] || "D"}
-              </td>
-              <td
-                style={{ background: subjects["I"] ? colors["I"] : "#ffffff" }}
-              >
-                {subjects["I"] || "I"}
-              </td>
-              <td
-                style={{ background: subjects["G"] ? colors["G"] : "#ffffff" }}
-              >
-                {subjects["G"] || "G"}
-              </td>
-              <td
-                style={{ background: subjects["H"] ? colors["H"] : "#ffffff" }}
-              >
-                {subjects["H"] || "H"}
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">Wednesday</th>
-              <td
-                style={{ background: subjects["E"] ? colors["E"] : "#ffffff" }}
-              >
-                {subjects["E"] || "E"}
-              </td>
-              <td
-                style={{ background: subjects["F"] ? colors["F"] : "#ffffff" }}
-              >
-                {subjects["F"] || "F"}
-              </td>
-              <td
-                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
-              >
-                {subjects["A"] || "A"}
-              </td>
-              <td
-                style={{ background: subjects["B"] ? colors["B"] : "#ffffff" }}
-              >
-                {subjects["B"] || "B"}
-              </td>
-              <td
-                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
-              >
-                {subjects["C"] || "C"}
-              </td>
-              <td
-                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
-              >
-                {subjects["D"] || "D"}
-              </td>
-              <td
-                style={{ background: subjects["G"] ? colors["G"] : "#ffffff" }}
-              >
-                {subjects["G"] || "G"}
-              </td>
-              <td
-                style={{ background: subjects["H"] ? colors["H"] : "#ffffff" }}
-              >
-                {subjects["H"] || "H"}
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">Thursday</th>
-              <td
-                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
-              >
-                {subjects["D"] || "D"}
-              </td>
-              <td
-                style={{ background: subjects["E"] ? colors["E"] : "#ffffff" }}
-              >
-                {subjects["E"] || "E"}
-              </td>
-              <td
-                style={{ background: subjects["F"] ? colors["F"] : "#ffffff" }}
-              >
-                {subjects["F"] || "F"}
-              </td>
-              <td
-                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
-              >
-                {subjects["A"] || "A"}
-              </td>
-              <td
-                style={{ background: subjects["B"] ? colors["B"] : "#ffffff" }}
-              >
-                {subjects["B"] || "B"}
-              </td>
-              <td
-                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
-              >
-                {subjects["C"] || "C"}
-              </td>
-              <td
-                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
-              >
-                {subjects["D"] || "D"}
-              </td>
-              <td
-                style={{ background: subjects["I"] ? colors["I"] : "#ffffff" }}
-              >
-                {subjects["I"] || "I"}
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">Friday</th>
-              <td
-                style={{ background: subjects["C"] ? colors["C"] : "#ffffff" }}
-              >
-                {subjects["C"] || "C"}
-              </td>
-              <td
-                style={{ background: subjects["D"] ? colors["D"] : "#ffffff" }}
-              >
-                {subjects["D"] || "D"}
-              </td>
-              <td
-                style={{ background: subjects["E"] ? colors["E"] : "#ffffff" }}
-              >
-                {subjects["E"] || "E"}
-              </td>
-              <td
-                style={{ background: subjects["F"] ? colors["F"] : "#ffffff" }}
-              >
-                {subjects["F"] || "F"}
-              </td>
-              <td
-                style={{ background: subjects["I"] ? colors["I"] : "#ffffff" }}
-              >
-                {subjects["I"] || "I"}
-              </td>
-              <td
-                style={{ background: subjects["H"] ? colors["H"] : "#ffffff" }}
-              >
-                {subjects["H"] || "H"}
-              </td>
-              <td
-                style={{ background: subjects["G"] ? colors["G"] : "#ffffff" }}
-              >
-                {subjects["G"] || "G"}
-              </td>
-              <td
-                style={{ background: subjects["A"] ? colors["A"] : "#ffffff" }}
-              >
-                {subjects["A"] || "A"}
-              </td>
-            </tr>
+            {selectedBluePrint.map((row, index) => (
+              <tr key={index}>
+                <th scope="row">{day[index]}</th>
+                {row.map((col, ind) => (
+                  <TableCoulmn col={col} ind={ind} />
+                ))}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-      <br/>
+      <br />
       {selectedSemester.length ? (
         <div>
           <List

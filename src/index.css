@@ -38,10 +38,6 @@ body {
     display: visible;
 }
 
-.buttons {
-    /* text-align: center; */
-}
-
 .buttons > button {
     margin-right: .4rem;
     margin-bottom: .4rem;
